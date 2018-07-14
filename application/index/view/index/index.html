@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>{$title}</title>
+</head>
+
+<link rel="stylesheet" href="{$smarty.const.__STATIC__}/css/index.css">
+<link rel="stylesheet" href="{$smarty.const.__STATIC__}/css/login.css">
+<link rel="stylesheet" href="{$smarty.const.__STATIC__}/css/register.css">
+<link rel="stylesheet" href="{$smarty.const.__STATIC__}/css/logout.css">
+<script language="javascript" src="{$smarty.const.__STATIC__}/bin/jquery-3.2.0.min.js"></script>
+<script language="javascript" type="text/javascript" src="{$smarty.const.__STATIC__}/bin/special_effects.js">
+</script>
+<script language="javascript" type="text/javascript" src="{$smarty.const.__STATIC__}/bin/SlideShow.js"></script>
+<script language="javascript" type="text/javascript" src="{$smarty.const.__STATIC__}/bin/Login.js"></script>
+<script language="javascript" type="text/javascript" src="{$smarty.const.__STATIC__}/bin/Reg.js"></script>
+<script language="javascript" type="text/javascript" src="{$smarty.const.__STATIC__}/bin/GetData.js"></script>
+
+
+<body>
+<script language="JavaScript">
+    {literal}
+        $(document).ready(function () {
+
+
+            //取得url中page的值
+            var urlStr = window.location.search.substr(6, 1);
+            //window.alert(urlStr);
+            //window.alert(parseInt(urlStr));
+
+            switch (urlStr) {
+
+                case '':
+                case '1':
+
+                    $(".numeric").eq(1).addClass("pageFocus").siblings().removeClass("pageFocus");
+                    $(".numeric").eq(0).addClass("isShow");
+                    break;
+
+                default:
+                    $(".numeric").eq(parseInt(urlStr)).addClass("pageFocus").siblings().removeClass("pageFocus");
+                    break;
+
+
+            }
+
+            //隐藏"上一页"和"下一页"
+
+            if (parseInt(urlStr) > 5) {
+
+                //隐藏"下一页"
+                $(".numeric").eq(parseInt(urlStr) + 1).addClass("isShow");
+
+
+            }
+
+
+        });
+    {/literal}
+
+</script>
+<div class="frame">
+
+    <div class="first">
+
+        <a href="#" class="current">首页</a>
+        <a href="#">视频</a>
+        <a href="#">社区</a>
+        <a href="#">杂文</a>
+        <a href="#">手册下载</a>
+        <a href="#">工具下载</a>
+        <a href="#">类库下载</a>
+        <a class="message" href="#">留言板</a>
+
+        <a href="#" class="login">
+
+            登录
+
+            <script type="text/javascript">
+
+                var info = document.cookie;
+                if(info.length>0){
+                    //window.alert(typeof(info));
+                    //以等号对cookie中信息进行分割
+                    var arr = info.split("=");
+                    //window.alert(arr[1]);
+                    //cookie中存储的信息通常有分号,用分号分割，将cookie的信息变成一个个键值对
+                    var flag = arr[0];
+                    var info = arr[1].split(';');
+
+                    //window.alert(info[1]);
+                    if(info[0]!=''&&flag=='name'){
+                        //window.alert(info[0]+"欢迎回来!");
+                        $(".login").text(info[0]+",您好!");
+
+                    }else{
+
+                        $(".login").text('登录');
+
+                    }
+
+
+
+                }else{
+
+                    document.writeln("登录");
+
+                }
+
+            </script>
+
+        </a>
+
+        <a href="#" class="register">注册</a>
+
+
+    </div>
+
+
+    <div class="second">
+
+
+        <div class="sec_one">
+
+            <img src="{$smarty.const.__STATIC__}/images/php.jpg" alt="" title="php中文网" width="154px" height="46px"/>
+
+
+        </div>
+        <div class="sec_two">
+
+            <input  id="search" value="请输入搜索的内容..." type="text" width="210px" height="30px"/>
+            <!--<img src="__STATIC__/images/search.jpg" alt="" width="50px" height="32px"/>-->
+            <input id="button" type="button" name="" value="搜索"/>
+
+        </div>
+        <div class="sec_three">
+
+
+            <div class="sec_three_child2">
+                <table cellpadding="0px" cellspacing="0px" border="0px" width="900px" height="40px">
+                    <tr>
+                        <td class="title">教程分类∨</td>
+                        <td><a href="#">PHP头条</a></td>
+                        <td><a href="#">独孤九贱</a></td>
+                        <td><a href="#">学习路线</a></td>
+                        <td width="150px"></td>
+                        <div class="prompt">
+                            <div class="show">在线工具∨</div>
+                            <div class="triangle"></div>
+                            <div class="rectangle"><a href="#" class="inf">waiting!</a></div>
+
+                        </div>
+
+                        <td><a href="#">在线考试</a></td>
+                    </tr>
+                </table>
+
+            </div>
+            <div class="association">
+
+                <div class="sec_three_child1">
+
+                    <table cellspacing="0px" cellpadding="0px" border="0px" width="199px" height="392px">
+
+                        <tr id="1">
+
+                            <td index="1" class="td_title">前端开发</td>
+                            <td index="1" class="td_symbol">></td>
+
+                        </tr>
+                        <tr>
+                            <td index="1" colspan="2" class="td_title">HTML/CSS JavaScript</td>
+
+                        </tr>
+
+                        <tr id="2">
+                            <td index="2" class="td_title">后端开发</td>
+                            <td index="2" class="td_symbol">></td>
+                        </tr>
+                        <tr>
+                            <td index="2" colspan="2" class="td_title">PHP开发 Java开发</td>
+
+                        </tr>
+                        <tr id="3">
+                            <td index="3" class="td_title">移动开发</td>
+                            <td index="3" class="td_symbol">></td>
+                        </tr>
+                        <tr>
+                            <td index="3" colspan="2" class="td_title">Android开发 IOS开发</td>
+
+                        </tr>
+
+                        <tr id="4">
+                            <td index="4" class="td_title">数据库</td>
+                            <td index="4" class="td_symbol">></td>
+                        </tr>
+                        <tr>
+                            <td index="4" colspan="2" class="td_title">MySQL Redis</td>
+
+                        </tr>
+                        <tr id="5">
+                            <td index="5" class="td_title">服务器运维&下载</td>
+                            <td index="5" class="td_symbol">></td>
+                        </tr>
+                        <tr>
+                            <td index="5" colspan="2" class="td_title">Git Linux Windows</td>
+
+                        </tr>
+                        <tr id="6">
+                            <td index="6" class="td_title">其它栏目</td>
+                            <td index="6" class="td_symbol">></td>
+                        </tr>
+                        <tr>
+                            <td index="6" colspan="2" class="td_title">XML .NET Web Services</td>
+
+                        </tr>
+
+
+                    </table>
+
+                </div>
+                <div id="0" class="sec_three_menu">
+                    <table id="one">
+
+                        <tr>
+                            <th>基础教程</th>
+                            <td>HTML教程</td>
+                            <td>CSS教程</td>
+                            <td>JavaScript教程</td>
+                            <td>JQuery教程</td>
+                            <td>Bootstrap教程</td>
+                            <td></td>
+                            <td></td>
+
+                        </tr>
+                        <tr>
+                            <th>进阶学习</th>
+                            <td>HTML5教程</td>
+                            <td>CSS3教程</td>
+                            <td>JSON教程</td>
+                            <td>AJAX教程</td>
+                            <td>AngularJS教程</td>
+                            <td></td>
+                            <td></td>
+
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td>Less教程</td>
+                            <td>Vue.js教程</td>
+                            <td>Node.js教程</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+
+                        </tr>
+                        <tr>
+                            <th>拓展阅读</th>
+                            <td>PS视频教程</td>
+                            <td>正则表达式</td>
+                            <td>XML教程</td>
+                            <td>Sass教程</td>
+                            <td>JQueryEasyUI教程</td>
+                            <td></td>
+                            <td></td>
+
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td>CoffeeScript教程</td>
+                            <td>ECMAScript教程</td>
+                            <td>Extjs教程</td>
+                            <td>H5教程</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+
+                        </tr>
+                        <tr>
+                            <th>参考手册</th>
+                            <td>HTML参考手册</td>
+                            <td>CSS参考手册</td>
+                            <td>HTML DOM</td>
+                            <td>Highcharts参考手册</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+
+                        </tr>
+                        <tr>
+                            <th>前端编程实战</th>
+                            <td>HTML&CSS实战</td>
+                            <td>JavaScript实战</td>
+                            <td>Bootstrap实战</td>
+                            <td>Jquery实战</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+
+                        </tr>
+                        <tr>
+                            <th>开发工具</th>
+                            <td>Sublime Text教程</td>
+                            <td>Vim教程</td>
+                            <td>PhpStorm教程</td>
+                            <td>Atom教程</td>
+                            <td>Git教程</td>
+                            <td>SVN教程</td>
+                            <td></td>
+
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td>Firebug教程</td>
+                            <td>Chrome开发工具教程</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+
+                        </tr>
+                    </table>
+                    <table id="two">
+                        <tr>
+                            <th>PHP开发</th>
+                            <td>PHP教程</td>
+                            <td colspan="3">PHP开发环境搭建与部署(PHP程序员工具箱)</td>
+                            <td>MySQL教程</td>
+                            <td>Linux教程</td>
+                            <td>Redis教程</td>
+
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td>JSON教程</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+
+                        </tr>
+                        <tr>
+                            <th>ASP.NET开发</th>
+                            <td>ASP.NET教程</td>
+                            <td>C#教程</td>
+                            <td>Web Pages教程</td>
+                            <td>Razor教程</td>
+                            <td>MVC教程</td>
+                            <td>Web Forms教程</td>
+
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td>ASP教程</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+
+                        </tr>
+                    </table>
+                    <table id="three">
+                        <tr>
+                            <th>移动开发</th>
+                            <td>Android</td>
+                            <td>SWift</td>
+                            <td>jQuery Mobile</td>
+                            <td>ionic</td>
+                            <td>IOS</td>
+                        </tr>
+                    </table>
+                    <table id="four">
+                        <tr>
+                            <th>数据库应用</th>
+                            <td>SQL</td>
+                            <td>MySQL</td>
+                            <td>SQLite</td>
+                            <td>MongoDB</td>
+                            <td>Redis</td>
+                            <td>Memcached</td>
+                        </tr>
+                    </table>
+                    <table id="five">
+                        <tr>
+                            <th>常用软件</th>
+                            <td colspan="2">Notepad++7.3.1</td>
+                            <td colspan="2">SublimeText3Mac版</td>
+                            <td colspan="2">PhpStorm10.0.1Mac版</td>
+                            <td colspan="2">PHP程序员工具箱</td>
+
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td>Wamp Server</td>
+                            <td>FileZilla3.24</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th>JS特效</th>
+                            <td>焦点幻灯</td>
+                            <td>菜单导航</td>
+                            <td>选项卡TAB</td>
+                            <td>在线客服</td>
+                            <td>图片特效</td>
+                            <td>相册特效</td>
+                            <td>表单按钮</td>
+                            <td>广告代码</td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td>时间日期</td>
+                            <td>播放器特效</td>
+                            <td>文字特效</td>
+                            <td>瀑布流特效</td>
+                            <td>鼠标特效</td>
+                            <td>窗口特效</td>
+                            <td>手风琴效果</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td>分页代码</td>
+                            <td>返回顶部</td>
+                            <td>时间轴特效</td>
+                            <td>放大镜效果</td>
+                            <td>抽奖转盘</td>
+                            <td>jQuery特效</td>
+                            <td>CSS3特效</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td>html5特效</td>
+                            <td>其它特效</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th>网站源码</th>
+                            <td>原创视频</td>
+                            <td>前端模板</td>
+                            <td>小程序源码</td>
+                            <td>微信源码</td>
+                            <td>wordpress模板</td>
+                            <td>电商源码</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td>dedecms模板</td>
+                            <td>企业站源码</td>
+                            <td>phpcms模板</td>
+                            <td>门户网站源码</td>
+                            <td>Discuz模板</td>
+                            <td>帝国cms模板</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td>phpwind模板</td>
+                            <td>ecshop模板</td>
+                            <td>shopex模板</td>
+                            <td>zblog模板</td>
+                            <td>百度mip</td>
+                            <td>Bootstrap模板</td>
+                            <td>其它模板</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td>手机站源码</td>
+                            <td>分销系统源码</td>
+                            <td>p2p源码</td>
+                            <td>app源码</td>
+                            <td>OA系统源码</td>
+                            <td>开发框架</td>
+                            <td>网站素材</td>
+                            <td></td>
+                        </tr>
+
+
+                    </table>
+                    <table id="six">
+                        <tr>
+                            <th>文字教程</th>
+                            <td>php头条</td>
+                            <td>php教程</td>
+                            <td>mysql教程</td>
+                            <td>html教程</td>
+                            <td>css教程</td>
+                            <td>js教程</td>
+                            <td>H5教程</td>
+                            <td>PS教程</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td>Java教程</td>
+                            <td>C#.NET教程</td>
+                            <td>Python教程</td>
+                            <td>XML/RSS</td>
+                            <td>微信开发</td>
+                            <td>小程序开发</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th>技术问答</th>
+                            <td>PHP</td>
+                            <td>HTML</td>
+                            <td>CSS</td>
+                            <td>Html5</td>
+                            <td>CSS3</td>
+                            <td>Bootstrap</td>
+                            <td>foundation</td>
+                            <td>JavaScript</td>
+                            <td>HTMLDOM</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th>jQuery</th>
+                            <td>AngularJS</td>
+                            <td>React</td>
+                            <td>jQueryUI</td>
+                            <td>Node.js</td>
+                            <td>AJAX</td>
+                            <td>MySQL</td>
+                            <td>Java</td>
+                            <td>Go</td>
+                            <td>C++</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td>Linux</td>
+                            <td>Python</td>
+                            <td>C</td>
+                            <td>Ruby</td>
+                            <td>Android</td>
+                            <td>Memcached</td>
+                            <td>Redis</td>
+                            <td>JSP</td>
+                            <td>JSON</td>
+                            <td>Python3</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td>Django</td>
+                            <td>Git</td>
+                            <td>Docker</td>
+                            <td>Servlet</td>
+                            <td>Lua</td>
+                            <td>Scala</td>
+                            <td>正则表达式</td>
+                            <td>VBScript</td>
+                            <td>SQL</td>
+                            <td>SQLite</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td>MongoDB</td>
+                            <td>Swift</td>
+                            <td>SVG</td>
+                            <td>ASP.NET</td>
+                            <td>C#</td>
+                            <td>PS</td>
+                            <td>IOS</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th>词条详解</th>
+                            <td>PHP</td>
+                            <td>MySQL</td>
+                            <td>HTML</td>
+                            <td>CSS</td>
+                            <td>JavaScript</td>
+                            <td>jQuery</td>
+                            <td>Java</td>
+                            <td>Go</td>
+                            <td>C++</td>
+                            <td>Linux</td>
+                            <td>Node.js</td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td>Python</td>
+                            <td>C</td>
+                            <td>Ruby</td>
+                            <td>Android</td>
+                            <td>Memcached</td>
+                            <td>Redis</td>
+                            <td>Bootstrap</td>
+                            <td>JSP</td>
+                            <td>Html5</td>
+                            <td>CSS3</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td>AngularJS</td>
+                            <td>Python3</td>
+                            <td>Django</td>
+                            <td>Git</td>
+                            <td>Servlet</td>
+                            <td>Lua</td>
+                            <td>正则表达式</td>
+                            <td>VBScript</td>
+                            <td>SQL</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td>SQLite</td>
+                            <td>MongoDB</td>
+                            <td>Swift</td>
+                            <td>SVG</td>
+                            <td>ASP.NET</td>
+                            <td>C#</td>
+                            <td>PS</td>
+                            <td>IOS</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+
+
+            </div>
+
+
+            <div class="sec_three_child3">
+                <div class="IMG">
+
+                    <div class="images"><img src="{$smarty.const.__STATIC__}/images/banner1.jpg" width="100%" height="100%"></div>
+                    <div class="images"><img src="{$smarty.const.__STATIC__}/images/banner2.jpg" width="100%" height="100%"></div>
+                    <div class="images"><img src="{$smarty.const.__STATIC__}/images/banner3.jpg" width="100%" height="100%"></div>
+                    <div class="images"><img src="{$smarty.const.__STATIC__}/images/banner4.jpg" width="100%" height="100%"></div>
+
+
+                </div>
+
+                <div class="Buttons">
+
+                    <div class="button left_button">‹</div>
+                    <div class="button right_button">›</div>
+
+                </div>
+                <div class="Points">
+
+                    <div class="point color"></div>
+                    <div class="point"></div>
+                    <div class="point"></div>
+                    <div class="point"></div>
+
+
+                </div>
+
+
+            </div>
+            <div class="sec_three_child4">
+                <div class="banner"><img src="{$smarty.const.__STATIC__}/images/first.jpg" width="100%" height="100px"/></div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+    <div class="third">
+
+        <div class="leftPart">
+            <div class="list0">
+            </div>
+            <div class="list1">
+                <div class="part1"><img src="{$smarty.const.__STATIC__}/images/1.jpg" width="100%" height="100%"></div>
+                <div class="part2">
+                    <h4 style="margin-left:40px;">PHP与Ajax极速入门</h4><br/>
+                    <p style="margin-left:40px;font-size:14px;">PHP与Ajax极速入门</p>
+                    <br/>
+                    <p style=" text-align:right;font-size:14px;">PeterZhu | 2017-10-24 21:57:32 | 点击数(477)</p>
+                </div>
+            </div>
+            <div class="list2">
+                <div class="part1"><img src="{$smarty.const.__STATIC__}/images/2.jpg" width="100%" height="100%"></div>
+                <div class="part2">
+                    <h4 style="margin-left:40px;">微信公众平台PHP开发搭建与揭秘视频教程</h4><br/>
+                    <p style="margin-left:40px;font-size:14px;">
+                        《微信公众平台PHP开发搭建与揭秘视频教程》以PHP技术为基础、全面系统地介绍了微信公众平台的搭建。主要内容有微信公众平台介绍、编辑模式的操作管理、开发模式的验证、地理位置信息的使用、常用...</p>
+                    <p style=" text-align:right;font-size:14px;margin-top:5px;">黄舟 | 2017-10-24 14:08:03 | 点击数(431)</p>
+
+                </div>
+            </div>
+            <div class="list3">
+                <div class="part1"><img src="{$smarty.const.__STATIC__}/images/3.jpg" width="100%" height="100%"></div>
+                <div class="part2">
+
+                    <h4 style="margin-left:40px;">PHP Composer 视频教程</h4><br/>
+                    <p style="margin-left:40px;font-size:14px;">《PHP Composer 视频教程》是 PHP5.3以上
+                        的一个依赖管理工具。它允许你申明项目所依赖的代码库，它会在你的项目中为你安装他们。Composer 不是一个包管理器。</p>
+
+                    <p style=" text-align:right;font-size:14px;margin-top:5px;">黄舟 | 2017-10-20 14:16:50 | 点击数(322)</p>
+
+                </div>
+            </div>
+            <div class="list4">
+                <div class="part1"><img src="{$smarty.const.__STATIC__}/images/4.jpg" width="100%" height="100%"></div>
+                <div class="part2">
+                    <h4 style="margin-left:40px;">LAMP兄弟连ThinkPHP视频教程</h4><br/>
+                    <p style="margin-left:40px;font-size:14px;">
+                        《LAMP兄弟连ThinkPHP视频教程》通过对ThinkPHP框架基础知识的讲解，带领大家由浅入深轻松掌握ThinkPHP的理论基础，更加全面的掌握ThinkPHP框架运行机制，帮助大家在...</p>
+
+                    <p style=" text-align:right;font-size:14px;margin-top:5px;">黄舟 | 2017-10-23 13:53:50 | 点击数(437)</p>
+
+                </div>
+            </div>
+            <div class="list5">
+                <div class="part1"><img src="{$smarty.const.__STATIC__}/images/5.jpg" width="100%" height="100%"></div>
+                <div class="part2">
+                    <h4 style="margin-left:40px;">微信小程序开发从入门到精通视频教程</h4><br/>
+                    <p style="margin-left:40px;font-size:14px;">
+                        《微信小程序开发从入门到精通视频教程》将和大家从零开始一步一步搭建微信小程序CMS系统，每个章节都会涉及到不同的知识点，等教程学习完你不但掌握了小程序开发全部知识，同时还拥有一个完整作品...</p>
+
+                    <p style=" text-align:right;font-size:14px;margin-top:5px;">黄舟 | 2017-10-21 14:03:35 | 点击数(872)</p>
+
+                </div>
+            </div>
+            <!--设置分页效果-->
+
+            <div class="list6">
+                <div class="Pages">
+
+                    <a href="" class=" numeric Last">上一页</a>
+                    <a href="" class=" numeric pageOne">1</a>
+                    <a href="" class=" numeric pageTwo ">2</a>
+                    <a href="" class=" numeric pageThree">3</a>
+                    <a href="" class=" numeric pageFour">4</a>
+                    <a href="" class=" numeric pageFive">5</a>
+                    <a href="" class=" numeric pageSix">6</a>
+                    <a href="" class=" numeric Next">下一页</a>
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+        <div class="rightPart">
+            <div class="titleOne">
+                <img src="{$smarty.const.__STATIC__}/images/title.jpg" style="margin-left:0;margin-top:12px;" width="95%" height="54%">
+
+                <div style="margin-top:26px;margin-left:0px;">
+                    <p style="border:none;border-radius:2px;width:11px;height:11px;background:darkred;float:left;margin-right:8px;"></p>
+                    <p style="font-size:14px;">最新专题</p>
+                </div>
+
+            </div>
+            <div class="titleTwo">
+                <div style="margin-top:24px;margin-left:0px;">
+                    <p class="tagJS">JS</p>
+                    <p style="float:left;">JavaScript事件</p>
+                    <p class="setP">2017-7-31</p>
+                </div>
+                <div style="margin-top:24px;margin-left:0px;">
+                    <p class="tagPHP">php</p>
+                    <p style="float:left;">关于php运算符优先级...</p>
+                    <p class="setP">2017-7-30</p>
+                </div>
+                <div style="margin-top:24px;margin-left:0px;">
+                    <p class="tagPHP">php</p>
+                    <p style="float:left;">php表达式</p>
+                    <p class="setP">2017-7-30</p>
+                </div>
+                <div style="margin-top:24px;margin-left:0px;">
+                    <p class="tagPHP">php</p>
+                    <p style="float:left;">php中魔术常量的...</p>
+                    <p class="setP">2017-7-30</p>
+                </div>
+                <div style="margin-top:50px;margin-left:0px;">
+                    <p style="border:none;border-radius:2px;width:11px;height:11px;background:darkred;float:left;margin-right:8px;"></p>
+                    <p style="font-size:14px;">最新编程文章</p>
+                </div>
+
+            </div>
+            <div class="titleThree">
+                <div style="margin-top:24px;margin-left:0px;">
+                    <p class="tagPHP">php</p>
+                    <p style="float:left;">php分割字符串并返回...</p>
+                    <p class="setP">2017-11-1</p>
+                </div>
+                <div style="margin-top:24px;margin-left:0px;">
+                    <p class="tagHTML">html</p>
+                    <p style="float:left;">html关于表单组件的...</p>
+                    <p class="setP">2017-11-1</p>
+                </div>
+                <div style="margin-top:24px;margin-left:0px;">
+                    <p class="tagPHP">php</p>
+                    <p style="float:left;">php删除字符串尾部的...</p>
+                    <p class="setP">2017-11-1</p>
+                </div>
+                <div style="margin-top:24px;margin-left:0px;">
+                    <p class="tagJS">JS</p>
+                    <p style="float:left;">JS点击跳转登录邮箱功...</p>
+                    <p class="setP">2017-11-1</p>
+                </div>
+                <div style="margin-top:50px;margin-left:0px;">
+                    <p style="border:none;border-radius:2px;width:11px;height:11px;background:darkred;float:left;margin-right:8px;"></p>
+                    <p style="font-size:14px;">最新问答</p>
+                </div>
+
+            </div>
+            <div style="margin-top:24px;margin-left:0px;">
+                <p style="float:left; margin-left:40px;font-size:14px;">[PHP]生命周期过程中的概念问题</p>
+                <p class="setP">2017-11-1</p>
+            </div>
+            <div style="margin-top:24px;margin-left:0px;">
+                <p style="float:left;margin-left:40px;font-size:14px;">[PHP]利用站点域名创建虚拟主...</p>
+                <p class="setP">2017-11-1</p>
+            </div>
+            <div style="margin-top:24px;margin-left:0px;">
+                <p style="float:left;margin-left:40px;font-size:14px;">[PHP]微信登录授权回调域名出...</p>
+                <p class="setP">2017-11-1</p>
+            </div>
+
+
+        </div>
+
+
+    </div>
+    <div class="fourth">
+
+
+        <table cellspacing="0px" cellpadding="0px" border="0px" width="96%">
+            <tr>
+                <th style="text-align:left;font-size:12px;">网站首页</th>
+                <th style="text-align:left;font-size:12px;">PHP视频</th>
+                <th style="text-align:left;font-size:12px;">PHP实战</th>
+                <th style="text-align:left;font-size:12px;">PHP代码</th>
+                <th style="text-align:left;font-size:12px;">PHP手册</th>
+                <th style="text-align:left;font-size:12px;">词条</th>
+                <th style="text-align:left;font-size:12px;">手记</th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr>
+                <td colspan="10" style="text-align:left;font-size:12px;">PHP中文网独家原创,永久免费的在线PHP视频教程,PHP技术学习阵地!</td>
+
+            </tr>
+            <tr>
+                <td width="40%" colspan="6" style="text-align:left;font-size:12px;">Copyright 2014-2017
+                    http://www.php.cn/ All Rights Reserved | 皖B2-20150071-9
+                </td>
+                <td style="text-align:left;font-size:12px;">免费申明</td>
+                <td style="text-align:left;font-size:12px;">广告服务</td>
+                <td style="text-align:left;font-size:12px;">联系我们</td>
+                <td style="text-align:left;font-size:12px;">赞助与捐赠</td>
+            </tr>
+        </table>
+
+    </div>
+
+
+</div>
+
+<div class="PopUp">
+    <div class="subject">
+        <a href="#" title="关闭" class="close">×</a>
+        <h3>登录是一种态度</h3>
+
+    </div>
+    <div class="content">
+        <form action="javascript:" method="" id="isSubmit">
+            <ol>
+                <li><h4>你必须先登录!</h4></li>
+                <li><strong class="name">用户名:</strong><input id="user" type="text" name="name"/><span index="user"
+                                                                                                      style="color:red;"></span>
+                </li>
+                <li><strong class="password">密码:</strong><input id="passwd" type="password"/><span index="password"
+                                                                                                   style="color:red;"></span>
+                </li>
+                <li><input class="confirm" type="button" value="登录"/></li>
+            </ol>
+        </form>
+
+    </div>
+
+
+</div>
+<div class="shadow"></div>
+<div class="Reg">
+    <div class="head">
+        <a href="#" title="关闭" class="shutdown">×</a>
+        <h3>欢迎加入我们</h3>
+
+    </div>
+    <div class="text">
+        <form action="/model/rgeister_check.php" method="post" id="reg">
+            <ol>
+                <li><h4>以下是必填信息!</h4></li>
+                <li><strong class="user">用户名:</strong><input type="text" name="user" id="uName"/><span
+                            style="color:red;" index="u"></span></li>
+                <li><strong class="email">邮箱:</strong><input type="text" name="mail" id="mail"/><span style="color:red;"
+                                                                                                      index="m"></span>
+                </li>
+                <li><strong class="pass">密码:</strong><input type="password" name="password" id="pass"/><span
+                            style="color:red;" index="p"></span></li>
+                <li><strong class="correct">确认密码:</strong><input type="password" name="duplicate" id="correct"/><span
+                            style="color:red;" index="c"></span></li>
+                <li><input class="userReg" type="button" value="注册"/></li>
+            </ol>
+
+        </form>
+    </div>
+
+
+</div>
+<div class="logout identify">
+    <ul>
+        <li><img src="" title="log" alt="log"></li>
+        <li><a href="#">个人中心</a></li>
+        <li><a href="#" id="logout">注销</a></li>
+
+    </ul>
+
+</div>
+<div class="background"></div>
+
+
+</body>
+<script type="text/javascript" src="{$smarty.const.__STATIC__}/bin/jquery-3.2.0.min.js"></script>
+<script type="text/javascript">
+    {literal}
+        $(document).ready(function () {
+
+            //获得焦点的事件
+            $(".sec_two input").focus(function () {
+
+                if (this.value == "请输入搜索的内容...") {
+                    this.value = "";
+                }
+
+
+            });
+            //失去焦点的事件
+            $(".sec_two input").blur(function () {
+
+                if (this.value == "") {
+
+                    this.value = "请输入搜索的内容...";
+
+                }
+
+
+            });
+
+        });
+    {/literal}
+</script>
+<script type="text/javascript">
+    {literal}
+
+        //修改"登录"和"注册"标题的css样式
+        $(function () {
+
+            var str0 = new RegExp("登录");
+            var str1 = new RegExp("注册");
+            var user = $(".login").text();
+            var info = $(".register").text();
+
+            if (str0.test(user) && str1.test(info)) {
+
+                $(".login,.register").hover(function () {
+
+                    $(this).css({border: "none", color: "red", fontWeight: "bold"});
+                    //window.alert(user+","+info);
+
+
+                });
+                $(".login,.register").mouseleave(function () {
+
+                    $(this).css({border: "none", color: "white", fontWeight: "normal"});
+
+
+                });
+
+
+            } else {
+
+                $(".login").hover(function () {
+
+                    $(this).css({border: "none", color: "white", fontWeight: "bold"});
+                    //window.alert(user+","+info);
+                    //显示个人中心、注销框
+                    $(".logout").css("display", "block");
+
+
+
+                });
+                $(".login").mouseleave(function () {
+
+                    $(this).css({border: "none", color: "white", fontWeight: "normal"});
+
+
+                });
+
+                //隐藏个人中心、注销框
+                $(".identify").mouseleave(function () {
+
+                    $(".logout").css("display", "none");
+
+                });
+
+
+                //隐藏注册按钮
+                $(".register").css("display", "none");
+
+                //设置留言板页面跳转
+                $(".message").click(function () {
+
+                    $(this).attr("href", "./message.html");
+
+
+                });
+                //设置点击注销选项，清除cookie信息和文件并刷新页面
+
+                $("#logout").click(function () {
+
+                    //重置cookie保存的信息
+                    document.cookie='name=';
+                    $('.login').text('登录');
+                    //重新加载页面
+                    window.location.reload();
+
+
+
+
+                });
+
+
+
+
+
+                //阻止刷新页面时浏览器提示重复提交表单数据
+
+
+            }
+
+
+        });
+
+    {/literal}
+</script>
+
+
+</html>

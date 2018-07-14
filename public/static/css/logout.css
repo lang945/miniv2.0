@@ -1,0 +1,62 @@
+.logout{
+
+    top:6%;
+    left:82.6%;
+    z-index:9999;
+    position:fixed;
+    width:120px;
+    height:150px;
+    text-align:center;
+    line-height:46px;
+    background:RGBA(0,0,0,0.7);
+    border-radius:3px;
+    display:none;
+
+
+
+
+
+
+}
+
+ul{
+
+    margin:0;
+    padding:0;
+    list-style:none;
+    color:white;
+
+
+}
+li a:link{
+
+    text-decoration:none;
+    color:white;
+
+
+
+}
+
+
+li a:visited{
+
+
+    color:white;
+
+
+}
+li a:hover{
+
+    color:orangered;
+
+    font-weight:bold;
+
+}
+li a:active{
+
+    color:green;
+    font-weight:bold;
+
+
+
+}
