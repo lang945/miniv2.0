@@ -5,7 +5,8 @@
     <title>{$title}</title>
 </head>
 <body>
-<table border="0" cellspacing="0" cellpadding="0" align="center">
+
+<table border="1px" cellspacing="0" cellpadding="0" align="center">
     <tr>
         <th>ID</th>
         <th>姓名</th>
@@ -14,16 +15,21 @@
         <th>创建时间</th>
         <th>更新时间</th>
     </tr>
-    {foreach $content as $key => $value}
-    <tr>
-        <td> {$value.id} </td>
-        <td> {$value.user} </td>
-        <td> {$value.email} </td>
-        <td> {$value.password} </td>
-        <td> {$value.create_time} </td>
-        <td> {$smarty.now|date_format:'Y/m/d H:i:s'} </td>
-    </tr>
-    {/foreach}
+    {nocache}
+        {foreach $content as $key => $value}
+
+            <tr>
+            <td align="center"> {$value.id} </td>
+            <td align="center"> {$value.user} </td>
+            <td align="center"> {$value.email} </td>
+            <td align="center"> {$value.password} </td>
+            <td align="center"> {$value.create_time} </td>
+            <td align="center"> {$smarty.now|date_format:'Y/m/d H:i:s'} </td>
+            </tr>
+
+        {/foreach}
+    {/nocache}
 </table>
+
 </body>
 </html>
