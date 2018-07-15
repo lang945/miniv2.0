@@ -370,7 +370,7 @@ namespace mini\db {
             self::$sql = '';
             //计算总页数
             $totalPage = ceil($count/$number);
-            //pagination($totalPage);
+            pagination($totalPage);
             //设置页码的范围
             $page = max(1,$page);
             //每页的起始数
@@ -399,7 +399,7 @@ namespace mini\db {
             self::$stmt = null;
             self::$db = null;
             //返回结果
-            self::$result['total'] = $totalPage;
+            //self::$result['total'] = $totalPage;
             return self::$result;
         }
 
